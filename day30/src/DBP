@@ -1,0 +1,4 @@
+dri=com.mysql.jdbc.Driver
+url=jdbc:mysql://localhost:3306/mybase3
+user=root
+pas=123

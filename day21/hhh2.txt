@@ -1,0 +1,6 @@
+* newLine是BufferedWriter中的方法.
+* readLine是BufferedReader中的方法.
+* 而"\r\n"只支持windows系统
+* BufferedWriter的newLine()可以输出一个跨平台的换行符号
+* BufferedReader的readLine()方法可以读取一行字符(不包含换行符号)
+*###21.08_IO流(readLine()和newLine()方法)	
