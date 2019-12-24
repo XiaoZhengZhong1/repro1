@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获取元素</title>
+	</head>
+	<!--值不用var修饰,就是成员变量,整个html文件可用.用var修饰,只能本方法用-->
+	<script>
+		window.onload = function(){
+			//获取页面指定位置的元素    如果元素是字符串就要用双引号,否则不用
+			var uele = document.getElementById("username");
+				//输出显示值
+				//alert(uele);
+			//获取指定位置的内容(值)
+			var uvalue = uele.value;
+				alert(uvalue);
+		}
+	</script>
+	<body>
+		用户名: <input type="text" name="username" id="username"/><br />
+		密码    : <input type="password" name="password"/>
+	</body>
+</html>

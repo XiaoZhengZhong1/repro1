@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 写sql语句的  对应的是mybatis架构中的表配置文件组件 通过在映射标签中写sql语句-->
+<!--namespase="test1"  映射中加是名称是为了区分多个映射之间的区别好找  -->
+<!-- id="findUserById"    查询标签中用id也是在执行查询语句时好获取区分,多条查询语句之间的区别-->
+<!--parameterType="Integer"  传入参数 是指写sql语句时占位符的值类型  -->
+<!-- resultType=""    指查询结果的返回值的类型,一般都是对应该条查询语句的表对应的javaBean类的全类名-->
+<!--#{v}   表示占位符   mybatis框架中不能识别?号占位符   只能识别#{v}    大括号中参数看随便写,只起到占位防攻击作用  -->
+<mapper namespace="com.itheima.mapper.UserMapper">
+	<!-- sql 片段标签  指把公共的查询语句,放到一个标签中,给其它查询语句用include包含标签引用 -->
+	<sql id="aaa">
+	    select * from user
+	</sql>
+	
+	
+	<select id="findUserById" parameterType="Integer" resultType="com.itheima.mybatis.pojo.User">
+	    select * from user where id = #{v}
+	</select>
+
+<!-- 演示模糊查询 -->
+<!-- '%${value}%'  ${value} 是myBatis框架中模糊查询的固定格式 -->	
+	<select id="findUserByusername" parameterType="String" resultType="com.itheima.mybatis.pojo.User">
+	    select * from user where username like '%${value}%'
+	</select>
+	
+<!-- 演示添加用户   并且在添加用户标签中添加一个查询添加用户生成的最新主键标签 -->	
+<!--keyProperty="id" 表示查询到的key放于那个属性集   就是对应user表 封装的javaBean类的那个属性 -->	
+<!-- order="AFTER"  表示描述是在添加之前还是添加之后执行 
+ insert into user (username,sex,birthday,address) values (#{username},#{sex},#{birthday,#{address})
+-->	
+	<insert id="insertUser" parameterType="com.itheima.mybatis.pojo.User">
+	  <selectKey keyProperty="id" resultType="Integer" order="AFTER">
+	      select LAST_INSERT_ID()
+	  </selectKey>
+	    insert into user (username,sex,birthday,address) values (#{username},#{sex},#{birthday},#{address})    
+	</insert>
+	
+	
+	<!-- 演示更新操作 -->
+	<update id="updateUserById" parameterType="com.itheima.mybatis.pojo.User">
+	    update user 
+	    set username = #{username},sex = #{sex},birthday = #{birthday},address = #{address} where id = #{xxx}
+	</update>
+	
+		
+	<!-- 演示更新操作 -->
+	<update id="updateUserById111" parameterType="int">
+	    update user 
+	    set username = 'qqq' where id = #{xxx}
+	</update>
+	
+	
+	<!-- 演示删除操作 -->
+	<delete id="deleteUserById" parameterType="Integer">
+	    delete from user where id = #{xxx}
+	</delete>
+	
+	<!-- 演示模糊查询   演示把User类封装到QueryVo类中  参数是QueryVo类型-->
+	  <select id="findUserByQueryVo" parameterType="com.itheima.mybatis.pojo.QueryVo" resultType="com.itheima.mybatis.pojo.User">
+	    select * from user where username like "%"#{user.username}"%"
+	</select> 
+	
+	  
+	  <!-- 演示 返回参数是基本数据类型 -->
+	  <select id="UserCont" resultType="Integer">
+	       select count(*) from user
+	  </select>
+	  
+	  
+	  
+	  <!--	根据性别和名字查询用户  where 可以去掉第一个前ANd   -->
+	 <select id="selectUserBySexAndUsername" parameterType="com.itheima.mybatis.pojo.User" resultType="com.itheima.mybatis.pojo.User">
+	 	<!-- 用包含标签,引用映射标签下的sql标签中的公用查询语句 -->
+	 	<include refid="aaa"/>
+	 	<!-- where标签和where条件是一个意思 -->
+	 	<where>
+		 	<if test="sex != null and sex != ''">
+		 		 sex = #{sex} 
+		 	</if>
+		 	<if test="username != null and username != ''">
+			 	 and username = #{username}
+		 	</if>
+	 	</where>
+	 </select>
+	 
+	 
+	 <!-- 演示,根据多个id查询多个用户  id放集合中 -->
+	<!-- collection="list"  集合的值取决于反射中接口的参数类型 ,如果是集合, 那集合=list  -->
+	<!--collection="idsList"  集合的值取决于反射中接口的参数类型 如果是类型是 QueryVo 那集合=QueryVo类中定义的值 -->
+	 <select id="selectUserByIds" parameterType="com.itheima.mybatis.pojo.QueryVo" resultType="com.itheima.mybatis.pojo.User">
+	     <include refid="aaa"/>
+	     <where>
+   <!-- 因为是多个id 所以传参可以用循环标签     循环的是集合 collection=指必须是传入参数中的idsList  每一个是项item-->
+   				<!--表示每个id用  , 号分割    以id在中括号里面打开   以反括号关闭  就是(#{id},#{id},#{id}....)  -->
+	         <foreach collection="list" item="id" separator="," open="id in(" close=")">
+	   			#{id}
+	   			</foreach>
+	         </where>
+	 </select>
+	 
+	 
+	  <!-- 演示,根据多个id查询多个用户    id放数组中-->
+	<!-- collection="array"  集合的值取决于反射中接口的参数类型 ,如果是数组 那集合=array -->
+	<!--collection="ids"  集合的值取决于反射中接口的参数类型 如果是类型是 QueryVo 那集合=QueryVo类中定义的值 -->
+	 <select id="selectUserByIds2" parameterType="com.itheima.mybatis.pojo.QueryVo" resultType="com.itheima.mybatis.pojo.User">
+	     <include refid="aaa"/>
+	     <where>
+	         <foreach collection="array" item="id" separator="," open="id in(" close=")">
+	   			#{id}
+	   			</foreach>
+	         </where>
+	 </select>
+	 
+	 
+</mapper>

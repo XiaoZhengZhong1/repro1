@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>行内引用</title>
+		<!--行内引用适合标签中可以单独在标签中声明style设置,不会换选择器-->
+		<style type="text/css">
+			div{
+				font-size: 30px;
+				color: red;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div>
+			元素选择器演示     1
+		</div>
+		<div>
+			元素选择器演示     2
+		</div>
+<!--写了行内引用CSS代码,就可以直接在标签中用style属性声明    不用换选择器   虽然上面头部份和下行代码都设置了字体和颜色.都是以离内容近的为准-->
+		<dir style="font-size: 30px; color: blue;">
+			元素选择器演示     3
+		</div>
+	</body>
+</html>

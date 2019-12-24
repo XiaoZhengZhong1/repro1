@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+
+<configuration>
+	<!-- 和spring整合后 environments配置将废除 -->
+	<environments default="development">
+	    
+		<environment id="development">
+			<!-- 使用jdbc事务管理 -->
+			<transactionManager type="JDBC" />
+			<!-- 数据库连接池 -->
+		
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url"
+					value="jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8" />
+				<property name="username" value="root" />
+				<property name="password" value="123" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- 告诉核心配置文件  映射表mapper的位置  是当前项目相对位置 -->
+	<mappers>
+	   <!--<mapper resource="sqlmap/user.xml"></mapper>  次种配置方法,如果有100个表就要配100次,开发不用-->	
+	
+	<!-- 包名配置方法,再多的表也只需只需配置一次 ,条件是1:表xml名称必须和表接口名一致,系统会以xml区分,本项目中的接口名就是
+	UserMapper.java  那表xml就应该是UserMapper.xml 2:必须和接口在同一包下      只填包名即可-->
+	
+	<package name="com.itheima.mapper" />
+
+	</mappers>
+	
+	
+</configuration>

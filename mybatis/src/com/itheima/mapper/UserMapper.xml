@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 写sql语句的  对应的是mybatis架构中的表配置文件组件 通过在映射标签中写sql语句-->
+<!--namespase="test1"  映射中加是名称是为了区分多个映射之间的区别好找  -->
+<!-- id="findUserById"    查询标签中用id也是在执行查询语句时好获取区分,多条查询语句之间的区别-->
+<!--parameterType="Integer"  传入参数 是指写sql语句时占位符的值类型  -->
+<!-- resultType=""    指查询结果的返回值的类型,一般都是对应该条查询语句的表对应的javaBean类的全类名-->
+<!--#{v}   表示占位符   mybatis框架中不能识别?号占位符   只能识别#{v}    大括号中参数看随便写,只起到占位防攻击作用  -->
+<mapper namespace="com.itheima.mapper.UserMapper">
+	<select id="findUserById" parameterType="Integer" resultType="com.itheima.mybatis.pojo.User">
+	    select * from user where id = #{v}
+	</select>
+
+<!-- 演示模糊查询 -->
+<!-- '%${value}%'  ${value} 是myBatis框架中模糊查询的固定格式 -->	
+	<select id="findUserByusername" parameterType="String" resultType="com.itheima.mybatis.pojo.User">
+	    select * from user where username like '%${value}%'
+	</select>
+	
+<!-- 演示添加用户   并且在添加用户标签中添加一个查询添加用户生成的最新主键标签 -->	
+<!--keyProperty="id" 表示查询到的key放于那个属性集   就是对应user表 封装的javaBean类的那个属性 -->	
+<!-- order="AFTER"  表示描述是在添加之前还是添加之后执行 
+ insert into user (username,sex,birthday,address) values (#{username},#{sex},#{birthday,#{address})
+-->	
+	<insert id="insertUser" parameterType="com.itheima.mybatis.pojo.User">
+	  <selectKey keyProperty="id" resultType="Integer" order="AFTER">
+	      select LAST_INSERT_ID()
+	  </selectKey>
+	    insert into user (username,sex,birthday,address) values (#{username},#{sex},#{birthday},#{address})    
+	</insert>
+	
+	
+	<!-- 演示更新操作 -->
+	<update id="updateUserById" parameterType="com.itheima.mybatis.pojo.User">
+	    update user 
+	    set username = #{username},sex = #{sex},birthday = #{birthday},address = #{address} where id = #{xxx}
+	</update>
+	
+		
+	<!-- 演示更新操作 -->
+	<update id="updateUserById111" parameterType="int">
+	    update user 
+	    set username = 'qqq' where id = #{xxx}
+	</update>
+	
+	
+	<!-- 演示删除操作 -->
+	<delete id="deleteUserById" parameterType="Integer">
+	    delete from user where id = #{xxx}
+	</delete>
+	
+	
+	
+</mapper>

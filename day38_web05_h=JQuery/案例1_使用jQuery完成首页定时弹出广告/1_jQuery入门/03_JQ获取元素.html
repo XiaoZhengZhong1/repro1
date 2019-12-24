@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JQ获取元素方式</title>
+		<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+		<script>
+		
+		$(function(){
+			//1:传统方式获取元素,单击事件赋值 ,并指定跳转页面位置的演示
+//			document.getElementById("btn").onclick=function(){
+//			location.href="04_惊喜(配合03).html";
+//			}		
+			
+			//2:jquery获取元素方式:$("#btn")
+			$("#btn").click(function(){
+				location.href="04_惊喜(配合03).html";
+			});
+		});
+			
+		</script>
+		
+			
+		
+	</head>
+	<body>
+		<input type="button"  value="点击有惊喜" id="btn" />
+	</body>
+</html>

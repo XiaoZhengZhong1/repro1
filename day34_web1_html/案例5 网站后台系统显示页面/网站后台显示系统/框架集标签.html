@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>框架集标签</title>
+	</head>
+	<frameset rows="20%,*">
+		<frame src="上部分.html" />
+		<frameset  cols="20%,*">
+			<frame src="felt.html" />
+			<frame name="right" />	<!--表示把*号部分的框架取名为right注意是一个字符串,不是html文件,如果是文件,
+				有超链接时,会另外跳出一个解析页面.是name会在当前页面的*号部分出现链接
+			-->
+		</frameset>
+		
+	</frameset>
+</html>

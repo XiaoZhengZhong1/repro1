@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>完成表格隔行换色</title>
+		<script>
+/*	事件为有名称类型演示		function init(){
+				alert("a")
+			}*/
+	/*事件无名称类型演示*/
+		window.onload=function(){
+			/*1:获取表格*/
+			var tabl =document.getElementById("tab");
+			/*2:获取表格tbody里面的行数(长度)    tBodies[0]表示多个tbody表中的0索引位置,就是第一个   */
+			var len = tabl.tBodies[0].rows.length;
+			alert(len);
+			/*3:对获取的tbody里面的行,进行遍历*/
+			for(var i=0;i<len;i++){
+				/*用摸鱼2来判断奇数和偶数行*/
+				if(i%2==0){
+				/*4:对偶数行进行背景颜色设置*/
+				tabl.tBodies[0].rows[i].style.backgroundColor="pink";
+				}else{
+					tabl.tBodies[0].rows[i].style.backgroundColor="gold";
+				}
+			}
+		}
+	
+		</script>
+	</head>
+	<!--事件为有名称类型演示1:添加事件onload="init()页面加载事件,表示加载整个表,-->
+	<!--<body onload="init()"-->
+		
+		<body>
+		<table border="1" width="500" height="50" align="center" id="tab" >
+			<thead>
+				<tr>
+					<th>编号</th>
+					<th>姓名</th>
+					<th>年龄</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr >
+					<td>1</td>
+					<td>张三</td>
+					<td>22</td>
+				</tr>
+				<tr >
+					<td>2</td>
+					<td>李四</td>
+					<td>25</td>
+				</tr>
+				<tr >
+					<td>3</td>
+					<td>王五</td>
+					<td>27</td>
+				</tr>
+				<tr >
+					<td>4</td>
+					<td>赵六</td>
+					<td>29</td>
+				</tr>
+				<tr >
+					<td>5</td>
+					<td>田七</td>
+					<td>30</td>
+				</tr>
+				<tr >
+					<td>6</td>
+					<td>汾九</td>
+					<td>20</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

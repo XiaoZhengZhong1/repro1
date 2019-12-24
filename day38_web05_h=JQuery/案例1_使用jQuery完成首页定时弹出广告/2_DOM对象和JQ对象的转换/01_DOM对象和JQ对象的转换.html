@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM和JQ对象的转换</title>
+		<script type="text/javascript" src="../../js/jquery-1.8.3.min.js"></script>
+			<script >
+				//1:JS的DOM(document)操作
+				function write1(){
+				//	document.getElementById("span1").innerHTML="萌萌哒";
+				
+				//演示证明JS也无法使用JQ的属性和方法
+				//	document.getElementById("span1").html("好帅");
+				
+				//4:将DOM对象转换为JQ对象
+				//先把DOM对象定义成变量.避免代码太长
+				var spanEle =document.getElementById("span1");
+				//将DOM对象转换成JQ对象
+				$(spanEle).html("想你");
+				}
+			
+			
+			$(function(){
+			//获取id 绑定  鼠标单击事件click(不要on),在函数中给事件添加内容
+				$("#btn2").click(function(){
+					//注意JQ无法使用JS的属性和方法.比如下面的innerHTML
+					//$("#span1").innerHTML="好帅";
+				
+				//2:使用JQ自己的方法html()
+				$("#span1").html("好帅");
+				
+				
+				//3:JQ对象向JS对象转换方式1
+				$("#span1").get(0).innerHTML="长高了";
+				
+				
+				
+				//JQ对象向JS对象转换方式2
+				$("#span1")[0].innerHTML="瘦了";
+				
+				});
+				
+			});
+				
+			</script>
+		
+	</head>
+	<body>
+		<input type="button" value="JS写入"  onclick="write1()" />
+		<input type="button"  value="JQ写入"  id="btn2"/><br />
+		磊哥: <span id="span1">好乖</span>
+	</body>
+</html>

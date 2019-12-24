@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--一般开发都是用框架提供好的约束比如:下行代码中的4个约束:1:xmlns,2:xmlns:xsi,3:xsi:schemaLocation,4:version -->
+<web-app xmlns="http://www.example.org/web-app_2_5" 
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://www.example.org/web-app_2_5 web-app_2_5.xsd"
+			version="2.5">
+	<!-- xml的格式 -->
+	<!--注意xml文档的第一行,开头必须是:<?xml version="1.0" encoding="UTF-8"?> 可以省略encoding="UTF-8"-->
+	<!-- 下面3点是xml文档的必须固定约束格式,不用刻意记,写时都有代码提示,鼠标移上去也会提示约束内的两个子标签 -->
+	<!--1:<web-app></web-app> 2:<servlet></servlet> 3:<servlet-mapping></servlet-mapping>   -->		
+  <servlet>
+      <servlet-name>a</servlet-name>
+      <servlet-class>b</servlet-class>
+  </servlet>  
+  <servlet-mapping>
+      <servlet-name>c</servlet-name>
+      <url-pattern>d</url-pattern>
+  </servlet-mapping>
+   	  
+</web-app>    
+    
+    
+    
+    

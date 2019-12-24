@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>validate入门案例</title>
+		<script type="text/javascript" src="../../js/jquery-1.8.3.min.js"></script>
+		<!--//注意validate是建立在JQ的基础之上的,所有要先到JQ包再导validate包-->
+		<script type="text/javascript" src="../../js/jquery.validate.min.js"></script>	
+		<!--导国际化包-->
+		<script type="text/javascript" src="../../js/messages_zh.js"></script>
+			
+		
+		<script type="text/javascript">
+//			页面加载
+			$(function(){
+				//获取表单id 并绑定事件校验事件 在事件函数中添加内容
+				$("#checkFrom").validate({
+					//规则,注意每行如果有下行,要有逗号,包括大括号
+					rules:{
+						username:{
+							required:true,
+							minlength:6
+						},
+						password:{
+							required:true,
+							digits:true,
+							minlength:6
+						}
+					},
+					//中文完字信息
+					messages:{
+						username:{
+							required:"姓名不能为空",
+							minlength:"长度不能少于6位"
+						},
+						password:{
+							required:"密码不能为空",
+							digits:"密码只能是整数",
+							minlength:"密码不能少于6位"
+						}
+					}
+					
+				});
+			});
+		</script>
+		</head>
+	<body>
+		<form action="#" id="checkFrom"> 
+		用户名: <input type="text" name="username" /><br />
+		密码:   <input type="password" name="password" /><br />
+		<input type="submit" />
+		</form>
+	</body>
+</html>

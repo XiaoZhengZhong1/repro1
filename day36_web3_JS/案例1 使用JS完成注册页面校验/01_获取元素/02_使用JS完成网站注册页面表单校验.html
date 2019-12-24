@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册页面</title>
+		<script>
+		//开始校验
+			function checkFrom(){
+				//先测试是否成功绑定表单,点击表单提交按钮弹出aa显示框为成功
+				//alert("aa")
+				var uvalue = document.getElementById("username").value;
+				//alert(uvalue)  检测是否能接收到用户输入的用户名
+				//做if判断用户名不能为空   uvalue=="" 注意script中只能用==表示等于 ""表示空窜  ,并给予提示alert("用户名不能为空")
+				if(uvalue==""){
+					alert("用户名不能为空");
+					//当返回false后表单不会提交
+					return false;
+				}
+				var pvalue = document.getElementById("password").value;
+				if(pvalue==""){
+					alert("密码名不能为空");
+					//当返回false后表单不会提交
+					return false;
+				}
+				var repvalue = document.getElementById("repassword").value;
+				if(repvalue!=pvalue){
+					alert("密码不一致");
+					//当返回false后表单不会提交
+					return false;
+				}
+				var evalue = document.getElementById("emaile").value;
+				if(!/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(evalue)){
+					alert("邮箱格式不正确");
+					return false;
+				}
+			}
+		</script>
+		
+	</head>
+	
+	<body>
+		<!--在主体部分写一个5行1列的表格,表示整个大的主体页面-->
+		<table border="1px" width="1300px" align="center" cellspacing="0px" cellpadding="0px">
+			<!--1:logo部分-->
+			<tr>
+				<td>
+					<table border="1px" width="100%" height="100%">
+						<tr height="50px">
+							<td width="33.3%">
+								<img src="../../img/logo2.png" height="47px">
+							</td>
+							<td width="33.3%">
+								<img src="../../img/header.png" height="47px">
+							</td>
+							<td width="33.3%">
+								<a href="#">注册</a>
+								<a href="#">登陆</a>
+								<a href="#">购物车</a>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<!--2:导航栏部分-->
+			<tr height="50px">
+				<td bgcolor="black">
+					<!--&nbsp表示一个空格-->
+					&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#"><font size="5" color="white">首页</font></a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#"><font color="white">手机数码</font></a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#"><font color="white">电脑办公</font></a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#"><font color="white">鞋靴用品</font></a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#"><font color="white">家用电器</font></a>
+				</td>
+			</tr>
+			<!--3:注册表单-->
+			<tr>
+				<!--嵌套一个10行2列的表格,表示注册表单-->	<!--onsubmit="return checkFrom()绑定表单返回表单提交的函数,就是编号id号  -->
+				<form action="#" method="get" name="getform" onsubmit="return checkFrom()">
+				<td headers="600px" align="center" background="../../img/regist_bg.jpg">
+					<table border="1px" width="700px" height="300px" cellpadding="0px" cellspacing="0px" bgcolor="white">
+						<tr>
+							<td colspan="2">
+							<font size="5">注册会员</font>&nbsp;&nbsp;&nbsp;"USER REGISTER
+							</td>
+							
+						</tr>
+						<tr>
+							<td>
+								用户名
+							</td>
+							<td>
+								<input type="text" name="user" id="username" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								密码
+							</td>
+							<td>
+								<input type="password" name="password" id="password"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								确认密码
+							</td>
+							<td>
+								<input type="password" name="repassword" id="repassword"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Emaile
+							</td>
+							<td>
+								<input type="text" name="emaile" id="emaile" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								姓名
+							</td>
+							<td>
+								<input type="text" name="username" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								性别
+							</td>
+							<td>
+								<input type="radio" name="sex" value="男" />男
+								<input type="radio" name="sex" value="女" />女
+							</td>
+						</tr>
+						<tr>
+							<td>
+								出生日期
+							</td>
+							<td>
+								<input type="text" name="birthday" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								验证码
+							</td>
+							<td>
+								<input type="text" name="yzm" />
+								<img src="../../img/yanzhengma.png" />
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="submit" value="注册" />
+							</td>
+							</form>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<!--4:广告部分-->
+			<tr>
+				<td>
+					<img src="../../img/ad.jpg" />
+				</td>
+			</tr>
+			<!--5:友情链接-->
+			<tr>
+				<td  align="center">
+					<a href="#">关于我们</a>
+					<a href="#">联系我们</a>
+					<a href="#">招贤纳士</a>
+					<a href="#">法律声明</a>
+					<a href="#">友情链接</a>
+					<a href="#">支付方式</a>
+					<a href="#">配送方式</a>
+					<a href="#">服务声明</a>
+					<a href="#">广告声明</a>
+					<p>
+						传智商城 ,版权所有
+					</p>
+				</td>
+			</tr>
+			
+		</table>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>切换图片</title>
+		<!--div必须和css一起用-->
+		<style>
+			/*给主体中div设置外框属性*/
+			div{
+				border: 1px solid red;
+				width: 500px;
+				height: 500px;
+				margin: auto;
+				text-align: center;
+				}
+		</style>
+		<script >
+			/*用JS实现图片切换.  方法 :在主体部分div页面原图片中添加一个id=1.jpg属性   在主体部分写script绑定单击按钮的值当作方法,在方法大括号中获取
+  首页原图的id属性值,并赋值1.gp.src= "../../"+i+"jpg" 在方法外定义var i = 1; 表示当图片以12345数字命名时.单击后+1达到自动循环效果    */
+			var i = 1;
+			function changeImg(){
+				i++;
+				document.getElementById("jpg").src="../../img/"+i+".jpg";
+				if(i==3){
+					i=0;
+					}
+			}
+		</script>
+		
+	
+	</head>
+	
+	<body>
+		<div>
+			<!--表示输入类型是 按钮   值是  下一张    单击鼠标   改变图片        就是在图片框生成一个    下一张    的按钮  可以单击-->
+			<input type="button" value="下一张" onclick="changeImg()" />
+			<!--提供页面图片-->
+			<img src="../../img/1.jpg"width="100%" height="90%" id="jpg"/>
+			
+		</div>
+	</body>
+</html>

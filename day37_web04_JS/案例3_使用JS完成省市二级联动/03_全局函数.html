@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>全局函数</title>
+		<script >
+			var str="肖磊";
+			//alert(encodeURI(str));	//表示获取str的值原码 %E8%82%96%E7%A3%8A
+			//alert(encodeURIComponent(str));	//表示获取str的值原码 %E8%82%96%E7%A3%8A
+			//alert(decodeURI(encodeURI(str)));	//表示获取解码	肖磊
+			//alert(decodeURI(encodeURIComponent(str)));	//表示获取解码	肖磊
+		
+		
+			var str2="http://www.xiaolei.com";
+			//alert(encodeURI(str2));	//表示获取str2的值原码 http://www.xiaolei.com
+			//alert(encodeURIComponent(str2));	//表示获取str2的值原码 http%3A%2F%2Fwww.xiaolei.com
+			//alert(decodeURI(encodeURI(str2)));	//表示获取解码	http://www.xiaolei.com
+			//alert(decodeURI(encodeURIComponent(str2)));	//表示获取解码http%3A%2F%2Fwww.xiaolei.com
+			
+			var str3="alert('abc')";
+				eval(str3);	//输出结果:abc
+		</script>
+		
+		
+	</head>
+	<body>
+	</body>
+</html>

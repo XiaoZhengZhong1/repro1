@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//WebContent/image/common.js=UTF-8
+encoding//WebContent/image/jquery.js=UTF-8
+encoding//WebContent/js/jquery-1.11.3.min.js=UTF-8
+encoding//src/com/itheima/dao/UserDao.java=UTF-8
+encoding//src/com/itheima/domain/User.java=UTF-8
+encoding//src/com/itheima/service/UserService.java=UTF-8
+encoding//src/com/itheima/utils/CommonsUtils.java=UTF-8
+encoding//src/com/itheima/utils/DataSourceUtils.java=UTF-8
+encoding//src/com/itheima/utils/JedisPoolUtils.java=UTF-8
+encoding//src/com/itheima/utils/MD5Utils.java=UTF-8
+encoding//src/com/itheima/web/filter/UserLoginPrivilegeFilter.java=UTF-8
+encoding//src/com/itheima/web/servlet/BaseServlet.java=UTF-8
+encoding//src/com/itheima/web/servlet/CallbackServlet.java=UTF-8
+encoding//src/com/itheima/web/servlet/PrdocutServlet.java=UTF-8
+encoding//src/com/itheima/web/servlet/UserServlet.java=UTF-8

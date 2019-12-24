@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单标签</title>
+	</head>
+	<body>
+		<!--表单内容必须在form标签中    #表示不跳转-->
+		<form action="#" method="get">	
+					<input type="hidden" value="id" />	<!--表示隐藏字段,不显示.只用做记录用户登陆生成id编号-->
+			用户名 : <input type="text"  name="username" size="40px" maxlength="18" placeholder="请输入用户名"/><br />	
+			密码:   <input type="password"  name="password"/><br /><!--固定格式必须是password-->
+		确认密码:   <input type="password"  name="repassword"/><br />
+			性别:   <input type="radio" name="s" value="男"/>男	<!--name表示分组用把男和女分为一组因为名字一样,分组后只能选一个-->
+					<input type="radio" name="s"  value="女" checked="checked"/>女<br />
+			爱好:   <input type="checkbox" name="sy" value="看书" />看书
+					<input type="checkbox" name="sy"  value="旅游"/>旅游
+					<input type="checkbox" name="sy"  value="看电影"/>看电影
+					<input type="checkbox" name="sy"  value="听歌" checked="checked"/>听歌<br />
+			头像:   <input type="file" name="file"  /><br />		
+			籍贯:   <select name="syz">
+					<option>--请选择--</option>
+					<option value="北京" selected="selected">北京</option>
+					<option value="上海">上海</option>
+					<option value="广州">广州</option>
+					</select><br />	
+		自我介绍 :   <textarea>
+			
+					</textarea><br  />		
+		提交按钮:	<input type="submit" value="注册" /><br  />		
+	普通提交按钮:	<input type="button" value="提交注册" /><br  />
+			重置:   <input type="reset" />
+					
+					
+		</form>
+	</body>
+</html>

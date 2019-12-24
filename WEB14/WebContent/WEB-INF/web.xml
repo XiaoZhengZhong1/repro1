@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>WEB14</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>demoServlet</display-name>
+    <servlet-name>demoServlet</servlet-name>
+    <servlet-class>com.xiaohai.demo.demoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>demoServlet</servlet-name>
+    <url-pattern>/demoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>statusServlet</display-name>
+    <servlet-name>statusServlet</servlet-name>
+    <servlet-class>com.xiaohai.line.statusServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>statusServlet</servlet-name>
+    <url-pattern>/statusServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>demobyte</display-name>
+    <servlet-name>demobyte</servlet-name>
+    <servlet-class>com.xiaohai.demo.demobyte</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>demobyte</servlet-name>
+    <url-pattern>/demobyte</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>downloadServlet</display-name>
+    <servlet-name>downloadServlet</servlet-name>
+    <servlet-class>com.xiaohai.demo.downloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>downloadServlet</servlet-name>
+    <url-pattern>/downloadServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>checkservlet</display-name>
+    <servlet-name>checkservlet</servlet-name>
+    <servlet-class>com.xiaohai.checkimg.checkservlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>checkservlet</servlet-name>
+    <url-pattern>/checkservlet</url-pattern>
+  </servlet-mapping>
+  
+  
+    <servlet>
+    <description></description>
+    <display-name>CheckImgServlet</display-name>
+    <servlet-name>CheckImgServlet</servlet-name>
+    <servlet-class>com.xiaohai.checkimg.CheckImgServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckImgServlet</servlet-name>
+    <url-pattern>/checkImg</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+</web-app>

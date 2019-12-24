@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>层级选择器</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+		<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+			<script >
+				//页面加载
+				$(function(){
+					//先获取输入标签id,并绑定单击事件,在事件函数中添加内容
+					$("#btn1").click(function(){
+					//1:要求1:选择body中的所有的div元素,	把背景颜色都设为粉色
+					$("body div").css("background-color","fuchsia");
+					});
+					
+					$("#btn2").click(function(){
+					//2:要求2:选择body中的第一级的孩子,把背景颜色都设为红色  找子类用 > body>div
+					$("body>div").css("background-color","red");
+					});
+					
+					$("#btn3").click(function(){
+					//3:要求3:选择id为two的元素的下一个元素"把背景颜色都设为蓝色  找下一个就是挨着的用 +  "#two+div"
+					$("#two+div").css("background-color","blue");
+					});
+					
+					$("#btn4").click(function(){
+					//4:要求4:选择id为one的所有的兄弟元素"把背景颜色都设为绿色  找兄弟元素用 +  ""#one~div"
+					$("#one~div").css("background-color","chartreuse");
+					});
+					
+				});
+			</script>
+		
+		
+		
+	</head>
+	<body>
+		<input type="button" id="btn1" value="要求1:选择body中的所有的div元素"/>
+		<input type="button" id="btn2" value="要求2:选择body中的第一级的孩子"/>
+		<input type="button" id="btn3" value="要求3:选择id为two的元素的下一个元素"/>
+		<input type="button" id="btn4" value="要求4:选择id为one的所有的兄弟元素"/>
+		
+		<hr/>
+		<div id="one">
+			<div class="mini">
+				111
+			</div>
+		</div>
+		
+		<div id="two">
+			<div class="mini">
+				222
+			</div>
+			<div class="mini">
+				333
+			</div>
+		</div>
+		
+		<div id="three">
+			<div class="mini">
+				444
+			</div>
+			<div class="mini">
+				555
+			</div>
+			<div class="mini">
+				666
+			</div>
+		</div>
+		
+		<span id="four">
+			
+		</span>
+	</body>
+</html>

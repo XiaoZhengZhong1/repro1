@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!--声明文档兼容模式,表示使用ie浏览器最新模式-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+		<!--设置视口宽度(为设备的理想宽度),页面初始缩放值(初始宽度和理想宽度)-->
+		<meta name="viewport" content="width=devic-width,initnal-scale=1">
+		<title>bootstrap入门介绍</title>
+		<!--引入boolStrap的核心样式包-->
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<!--引入JQ的核心js文件-->
+		<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+		<!--引入boolStrap的核心js文件-->
+		<script type="text/javascript" src="../../js/bootstrap.js"></script>
+		
+	</head>
+	<style type="text/css">
+		.container{
+			border: 1px solid red;
+			/*以下两行代码是修改,覆盖原码.因为优先级会优先使用当前代码*/
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+		.container-fluid{
+			border: 1px solid green;
+		}
+	</style>
+	<body>
+			<!--containner容器 1-->
+		<div class="container">
+			...
+		</div>
+		<!--container-fluid 流容器 2-->
+		<div class="container-fluid">
+			......
+		</div>
+		<!--普通div和上面两个容器,显示是不同的-->
+		<div>
+			......
+		</div>
+	</body>
+</html>

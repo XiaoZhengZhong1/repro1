@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!--值不用var修饰,就是成员变量,整个html文件可用.用var修饰,只能本方法用-->
+		<title>首页定时弹出广告</title>
+	
+	<style>
+		#father{
+			border: 1px solid red;
+			width: 1300px;
+			height: 2177px;
+			margin: auto;
+		}
+		#logo{
+			border: 1px solid blue;
+			width: 1300px;
+			height: 50px;
+		}
+		.top{
+			border: 1px solid black;
+			/*注意百分比后面不用px   比如width=33.3%*/
+			width: 431px;
+			height: 50px;
+			/*这里用到浮动,表示向左浮动,因为显示框是并列3个,我需要是一行3个框*/
+			float: left;
+		}
+		/*表示重新设置8行中第一行嵌套的3个中的第3个的高度,因为内div中内容偏上,所以单独定义了一个id=3a.用来单独设置该行*/
+		
+		
+		#menu{
+			border: 1px solid blue;
+			width: 1300px;
+			height: 50px;
+			background: black;
+		}
+		ul li{
+			/*display: inline;表示把li列中内容在同一行显示*/
+			display: inline;
+			color: white;
+		}
+		#product{
+			border: 1px solid red;
+			width: 1300px;
+			height: 567px;
+		}
+		#product_top{
+			border: 1px solid blue;
+			width: 100%;
+			height: 50px;
+		}
+		#3a{
+			/*垫顶12px*/
+			padding-top: 12px;
+		}
+		#product_botton{
+			border: 1px solid darkgreen;
+			width: 100%;
+			height: 500px;
+		}
+		#product_botton_left{
+			border: 1px solid blue;
+			width: 200px;
+			height: 500px;
+			float: left;
+		}
+		#product_botton_right{
+			border: 1px solid blue;
+			width: 1094px;
+			height: 500px;
+			float: left;
+		}
+		#big{
+			border: 1px solid red;
+			width: 545px;
+			height: 248px;
+			float: left;
+		}
+		.small{
+			border: 1px solid blue;
+			width: 180px;
+			height: 248px;
+			/*向左浮动对齐*/
+			float: left;
+			/*文件内容剧中显示*/
+			text-align: center;
+		}
+		#product_top{
+			padding-top: 12px;
+		}
+		#botton{
+			/*文件内容剧中显示*/
+			text-align: center;
+		}
+		a{
+			/*除去超链接下面的横线*/
+			text-decoration: none;
+		}
+	</style>
+		<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+			<script>
+				$(function(){
+				//1.书写显示广告图片的定时操作
+				tim = setInterval("showAd()",3000);
+			});
+			
+			//2.书写显示广告图片的函数
+			function showAd(){
+				//3.获取广告图片，并让其显示
+			//	$("#img2").show(1000);
+			
+	//把显示改为滑动slideDown向下滑动
+			//$("#img2").slideDown(5000);
+			
+	
+	//把滑动该为进入
+			$("#img2").fadeIn(5000);
+	
+			//4.清除显示图片定时操作
+				clearInterval(tim);
+				//5.设置隐藏图片的定时操作
+				tim = setInterval("hiddenAd()",3000);
+			}
+			
+			function hiddenAd(){
+				//6.获取广告图片，并让其隐藏
+			//	$("#img2").hide();
+			
+	//把隐藏改为向上滑动
+				//$("#img2").slideUp(5000);
+			
+			
+	//把滑动改为淡出,退出
+			$("#img2").fadeOut(5000);
+			
+			//7.清除隐藏图片的定时操作
+				clearInterval(tim);
+			}
+			</script>
+		
+		</head>
+<!--在整个首页定义 页面加载属性   值是  初始化   然后在头部份script绑定-->
+	<body onload="init()">
+		<!--完成首页思路,在一个大的div框中嵌套8个div框,一共9个,都是单独的.-->
+		<div id="father">
+			
+				<!-- 1:定时弹出广告步骤  -->
+			<!--插入定时弹出的广告图片,注意图片位置应该是和首页平级的      并设置隐私属性-->
+			<img src="../img/4.jpg" width="100%" style="display: none" id="img2" />
+			<!--1:logo部分-->
+			<div id="logo">
+				<div class="top">
+					<img src="../img/logo2.png" height="46px" />
+				</div>
+				<div class="top">
+					<img src="../img/header.png" height="46px" />
+				</div>
+				<div class="top"  id="3a" style="padding-top: 12px;">
+					<a href="#">注册</a>
+					<a href="#">登陆</a>
+					<a href="#">购物车</a>
+					
+				</div>
+				</div>
+				<!--表示去除浮动float: left;    因为下面的div不需要浮动框-->
+				<div id="clear">
+					
+				</div>
+			<!--2:导航栏-->
+			<div id="menu">
+				<ul>
+					<a href="#"><li style="font-size: 21px;">首页</li></a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#"><li>手机数码</li></a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#"><li>日用商品</li></a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#"><li>母婴用品</li></a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#"><li>家用电器</li></a>
+					
+				</ul>
+			</div>
+			<!--3:轮播图-->
+			<div id="">
+				<img src="../img/1.jpg" width="100%" id="jpg" />
+			</div>
+<!--4:最新商品      把该框嵌套分成头顶1个,底下1个,底下又嵌套,分为左边1个右边1个,右边再嵌套分为1个大,9个小,小的用类class选择器,其它都用id-->
+			<div id="product">
+				<div id="product_top">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<span style="font-size: 25px; padding-top: 12px;">最新商品</span>&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="../img/title2.jpg"/>
+				</div>
+				<div id="product_botton">
+					<div id="product_botton_left">
+						<img src="../img/big01.jpg" width="100%" height="100%"/>
+					</div>
+					<div id="product_botton_right">
+						<div id="big">
+							<a href="#"><img src="../img/middle01.jpg" width="100%" height="100%"/></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="..img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--5:广告图片-->
+			<div id="">
+				<img src="../img/ad.jpg"/ width="100%">
+			</div>
+			<!--6:热门商品-->
+			<div id="">
+				<div id="product_top">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<span style="font-size: 25px; padding-top: 12px;">热门商品</span>&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="../img/title2.jpg"/>
+				</div>
+				<div id="product_botton">
+					<div id="product_botton_left">
+						<img src="../img/big01.jpg" width="100%" height="100%"/>
+					</div>
+					<div id="product_botton_right">
+						<div id="big">
+							<a href="#"><img src="../img/middle01.jpg" width="100%" height="100%"/></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+						<div class="small">
+							<img src="../img/small01.jpg"/>
+							<a href=""><p style="color: red;">豆浆机</p></a>
+							<a href="#"><p style="color: red;">399</p></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--7:广告图片-->
+			<div id="">
+				<img src="../img/footer.jpg" width="100%"/>
+			</div>
+			<!--8:友情链接和版权信息-->
+			<div id="botton">
+					<a href="#">关于我们</a>
+					<a href="#">联系我们</a>
+					<a href="#">招贤纳士</a>
+					<a href="#">法律声明</a>
+					<a href="#">友情链接</a>
+					<a href="#">支付方式</a>
+					<a href="#">配送方式</a>
+					<a href="#">服务声明</a>
+					<a href="#">广告声明</a>
+					<p>
+						传智商城 ,版权所有
+					</p>
+			</div>
+		</div>
+	</body>
+</html>

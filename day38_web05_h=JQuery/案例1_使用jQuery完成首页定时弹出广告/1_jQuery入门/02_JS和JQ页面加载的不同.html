@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js和jq页面加载的不同</title>
+		<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+			<script>
+			//1;传统javascript页面加载
+			window.onload=function(){
+				alert("肖磊");
+			}
+			window.onload=function(){
+				alert("李霞");
+			//2:演示结果显示只有 李霞 ,表示或者覆盖前者
+			}
+			
+			
+			//3:javaQuery页面加载演示
+			jQuery(document).ready(function(){
+				alert("肖海");
+			});
+			$(document).ready(function(){
+				alert("肖肖");
+			});
+			//最终简写格式
+			$(function(){
+				alert("肖玲");
+			//4:演示结果显示,jq是按顺序加载,没有覆盖现象.说明加载比js要快
+			});
+			
+			</script>
+		
+	</head>
+	<body>
+	</body>
+</html>

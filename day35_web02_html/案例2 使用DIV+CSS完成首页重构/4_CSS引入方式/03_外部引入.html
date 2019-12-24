@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>外部引用</title>
+		<!--在当前目录下另外建了一个css文件,直接把选择器代码div{}写入文件,不需要style标签-->
+		<!--link是联系 导包的意思,rel表示stylesheet样式表      href表示要跳转导入的文件目录,因为是在当前目录所以直接写文件名-->
+		<link rel="stylesheet" href="cofig.css" />
+	</head>
+	<body>
+		<div>
+			外部选择器演示     1
+		</div>
+		<div>
+			外部选择器演示     2
+		</div>
+		<!--上面导了包之后,就可以在标签是单独设置属性了-->
+		<div style="font-size:30px; color:blue;">
+			外部选择器演示     3
+		</div>
+	</body>
+</html>

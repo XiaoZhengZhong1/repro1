@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>toggle的使用</title>
+		<style>
+			div{
+				border: 1px solid red;
+				width: 500px;
+				height: 350px;
+				margin: auto;
+				text-align: center;
+				}
+		</style>
+		<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+		<script >
+			$(function(){
+				$("#btn4").click(function(){
+					$("#img3").toggle();
+				});
+			});
+		</script>
+			
+		
+	</head>
+	<body>
+		<div>
+			<input type="button" value="显示/隐藏" id="btn4" /><br />
+			<img src="../img/1.jpg" width="100%" height="100%" id="img3" />
+		</div>
+		
+	</body>
+</html>

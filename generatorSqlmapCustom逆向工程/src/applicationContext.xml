@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- applicationContext.xml 是应用上下文配置 就是整个项目的配置 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- 指定绑定配置连接数据库的4个变量 驱动 网站  名称 密码 ,的文件配置 -->
+	<context:property-placeholder location="classpath:db.properties"/>
+	
+	<!-- 数据库连接池  -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxActive" value="10" />
+		<property name="maxIdle" value="5" />
+	</bean>
+	
+	<!-- Mybatis的工厂 -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!--注入 数据库连接 名称为上面的id 编号自定义 -->
+		<property name="dataSource" ref="dataSource"/>
+		<!--注入 核心配置文件的位置     位置在classPath类路径下  就是src下,因为所有的类都在src下 -->
+		<property name="configLocation" value="classpath:sqlMapConfig.xml"/>
+	</bean>
+	
+	<!--   演示Dao原始Dao  有些落后公司可能还会用此方法开发  也要掌握   
+	<bean id="userDao" class="com.itheima.mybatis.dao.UserDaoImpl">
+		给dao的实现类注入注入上面id值的工厂 实际上是注入给了dao实现类,继承的类  
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
+	</bean> -->	
+	
+	<!--原始Dao升级版   Mapper动态代理 不用直接实现接口,可通过接口字节码对象,自动反射创建实例 ,每张表都要手动配置   
+	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
+		<property name="mapperInterface" value="com.itheima.mybatis.mapper.UserMapper"/>
+	</bean>
+	-->
+	
+	
+	
+	<!--最终优化后的: Mapper动态代理开发加强版 之 扫描,指定包,系统指定扫描包中对应的接口和xml,开发中大多数公司都用-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 指定基本包,包中放所有的表对应的接口,以及和接口名一样的表xml -->
+		<property name="basePackage" value="com.itheima.mybatis.mapper"/>
+	</bean>
+	
+
+</beans>
